@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+    reactStrictMode: true,
+    compiler: {
+        styledComponents: {
+            ssr: true,
+            displayName: true, // For debugging
+        },
+    },
+    experimental: {
+        appDir: false, // Explicitly disable the App Router
+    },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
