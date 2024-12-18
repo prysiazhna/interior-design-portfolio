@@ -22,14 +22,21 @@ const Highlight = styled.div`
     display: block;
     font-size: 62px;
     font-weight: bold;
-    //color: rgb(75, 163, 191);
     color: rgb(0 178 235);
+
+    @media (min-width: 1000px) {
+      font-size: 40px !important;
+    }
   }
 
   .labels {
     margin: 0;
     font-size: 22px;
     color: rgb(0 178 235);
+
+    @media (max-width: 1000px) {
+      font-size: 16px;
+    }
   }
 `;
 

@@ -26,20 +26,20 @@ const FormWrapper = styled.form`
 
   button {
     padding: 12px 16px;
-    background-color: #d3e4d4;
-    color: #000;
+    background-color: rgb(0 178 235);
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 26px;
     transition: background 0.3s;
     
     &:hover {
-      background-color: #b6d3b7;
+      opacity: 0.8;
     }
     
     &:disabled {
-      background-color: #ccc;
+      opacity: 0.3;
       cursor: not-allowed;
     }
   }
@@ -56,9 +56,8 @@ const ContactForm: React.FC = () => {
         setIsSubmitting(true);
         console.log('Form submitted:', { name, phone, message });
 
-        // Simulate a delay to demonstrate form submission process
         setTimeout(() => {
-            setIsSubmitting(false); // Reset the button state after submission
+            setIsSubmitting(false);
         }, 2000);
     };
 

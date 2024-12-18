@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Socials from "../../components/Socials";
 import ContactForm from "./contact-form";
@@ -52,7 +52,7 @@ const Index: React.FC = () => {
         <SectionWrapper>
             <ContactWrapper>
                 <Title>Get Free Consultation</Title>
-                <p>I will gladly help you create a unique and stylish interior design, taking into account all your wishes, needs, and desired style.</p>
+                <p>I will be happy to help you create a unique and stylish interior design, taking into account all your wishes, needs, and desired style</p>
                 <ContactForm />
                 <Socials />
             </ContactWrapper>

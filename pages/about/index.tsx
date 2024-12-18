@@ -6,11 +6,13 @@ import SectionWrapper from "../../components/section-wrapper";
 import ImageWrapper from "../../components/image-wrapper";
 import AboutContent from "./about-content";
 import ReasonsSection from "../reasons/reasons-section";
+import Parallax from "../../components/parallax";
 
 const ContentWrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
+  min-height: 100vh;
   justify-items: auto;
   align-items: center;
 
@@ -28,6 +30,7 @@ const Index: React.FC = () => {
                 <ImageWrapper src="/images/serhii2.jpeg" alt="Project" maxWidth="750px" />
                 <AboutContent />
             </ContentWrapper>
+            <Parallax/>
             <ReasonsSection/>
         </SectionWrapper>
     );

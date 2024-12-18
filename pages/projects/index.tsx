@@ -10,13 +10,13 @@ import ReasonsSection from "../reasons/reasons-section";
 
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr; /* Одна колонка на маленьких екранах */
+  grid-template-columns: 1fr;
   gap: 40px;
   justify-content: center;
   align-items: center;
 
   @media (min-width: 992px) {
-    grid-template-columns: repeat(2, 1fr); /* Дві колонки для середніх і великих екранів */
+    grid-template-columns: repeat(2, 1fr); 
   }
 `;
 

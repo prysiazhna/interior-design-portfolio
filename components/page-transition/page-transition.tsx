@@ -20,7 +20,7 @@ const Background = styled.div`
   left: 0;
   top: 0;
   z-index: 9999;
-  background-color: #000; /* Same as background color to avoid flicker */
+  background-color: #000;
   transition: opacity 0s linear 0.1s;
 `;
 
@@ -43,6 +43,7 @@ export default function PageTransition({ children, backgroundColor }) {
         '/': 'Home',
         '/about': 'About',
         '/contact': 'Contact',
+        '/projects': 'Projects',
     };
 
     useEffect(() => {

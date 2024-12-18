@@ -32,8 +32,6 @@ const StyledTitle = styled.h2<{ size: "sm" | "md" | "lg" | undefined }>`
           size === "lg" &&
           css`
             font-size: 56px;
-            //margin-top: 50px;
-            //margin-bottom: 100px;
             margin-top: 50px;
             margin-bottom: 100px;
             @media (max-width: 1200px) {
