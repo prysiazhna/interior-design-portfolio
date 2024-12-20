@@ -5,6 +5,7 @@ import './../styles/globals.css';
 import Loader from "../components/Loader";
 import PageTransition from "../components/page-transition/page-transition";
 import HamburgerMenu from "../components/hamburger-menu/hamburger-menu";
+import {ToastContainer} from "react-toastify";
 
 export default function MyApp({ Component, pageProps, router }: AppProps) {
     const [loading, setLoading] = useState(true);
@@ -28,6 +29,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
                     <PageTransition key={router.route}>
                         <HamburgerMenu/>
                         <Component {...pageProps} />
+                        <ToastContainer theme="dark" />
                     </PageTransition>
                 </AnimatePresence>
             )}

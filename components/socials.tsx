@@ -2,44 +2,44 @@
 
 import React from "react";
 import styled from "styled-components";
+import MagneticButton from "./MagneticButton";
+import { ImBehance2, ImLinkedin, ImMail } from "react-icons/im";
 
 const SocialsWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 26px;
   align-items: center;
-  margin-top: 30px;
+`;
 
-  a {
-    display: flex;
-    align-items: center;
-    transition: background 0.3s;
+const SocialLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  color: white;
 
-    img{
-      width: 50px;
-    }
-
-    &:hover {
-      transform: scale(1.3);
-      transition: transform 500ms ease;
-    }
+  &:hover {
+    color: var(--main-color);
   }
 `;
 
 const Socials: React.FC = () => {
     const socialPlatforms = [
-        { name: "Behance", url: "#", icon: "/icons/behance.svg" },
-        { name: "Instagram", url: "#", icon: "/icons/instagram.svg" },
-        { name: "Telegram", url: "#", icon: "/icons/linkedin.svg" },
-        // { name: "Email", url: "#", icon: "/icons/email.svg" },
+        { name: "Behance", url: "https://www.behance.net/FreeSpacedesign", icon: <ImBehance2 size={50} /> },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/serhii-ponych-070762226/", icon: <ImLinkedin size={50} /> },
+        { name: "Gmail", url: "mailto:serhii.ponych27@gmail.com", icon: <ImMail size={50} /> },
     ];
 
     return (
         <SocialsWrapper>
             {socialPlatforms.map((platform) => (
-                <a href={platform.url} key={platform.name} title={platform.name}>
-                    <img src={platform.icon} alt={platform.name} />
-                </a>
+                <MagneticButton key={platform.name}>
+                    <SocialLink href={platform.url} target="_blank" title={platform.name}>
+                        {platform.icon}
+                    </SocialLink>
+                </MagneticButton>
             ))}
         </SocialsWrapper>
     );

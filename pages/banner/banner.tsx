@@ -10,7 +10,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: #181c1c;
+  background-color: var(--main-color-bg);
 `;
 
 const DarkOverlay = styled.div`

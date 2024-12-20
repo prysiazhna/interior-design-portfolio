@@ -2,11 +2,10 @@
 
 import React from "react";
 import styled from "styled-components";
-import Title from "../../components/Title";
-import { ProjectData } from "../../data/data.config";
 import SectionWrapper from "../../components/section-wrapper";
-import ProjectCard from "./project-card";
-import ReasonsSection from "../reasons/reasons-section";
+import Title from "../../components/title";
+import {ProjectData} from "../../data/data.config";
+import ProjectCard from "../../components/project-card";
 
 const GridWrapper = styled.div`
   display: grid;
@@ -15,7 +14,7 @@ const GridWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(2, 1fr); 
   }
 `;

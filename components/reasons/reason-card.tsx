@@ -20,13 +20,13 @@ const NumberWrapper = styled.div`
 
 const Number = styled.div`
   font-size: 28px;
-  color: rgb(0 178 235);
+  color: var(--main-color);
 `;
 
 const Divider = styled.div`
   width: 2px;
   height: 100%;
-  background-color: rgb(0 178 235);
+  background-color: var(--main-color);
   margin-left: 15px;
 `;
 
@@ -34,7 +34,7 @@ const Content = styled.div`
   div {
     font-size: 32px;
     margin: 0 0 8px;
-    color: rgb(0 178 235);
+    color: var(--main-color);
     font-family: var(--font-inter-regular), sans-serif;
   }
 

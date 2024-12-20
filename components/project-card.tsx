@@ -78,22 +78,21 @@ const HoverButton = styled(Link)`
 interface ProjectCardProps {
     id: string;
     imageSrc: string;
-    description: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ id, imageSrc, description }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ id, imageSrc }) => {
     return (
         <CardWrapper>
             <ImageWrapper>
                 <Image
                     src={imageSrc}
                     alt="Project Image"
-                    width={300}
-                    height={200}
+                    width={1200}
+                    height={900}
                     priority={true}
                 />
                 <Overlay className="overlay" />
-                <HoverButton href={`/project/${id}`} className="button">
+                <HoverButton href={`/projects/${id}`} className="button">
                     View Project
                 </HoverButton>
             </ImageWrapper>

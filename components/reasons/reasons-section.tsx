@@ -3,10 +3,12 @@
 import styled from "styled-components";
 import { Reasons } from "../../data/data.config";
 import React from "react";
-import Title from "../../components/Title";
 import ReasonCard from "./reason-card";
-import SectionWrapper from "../../components/section-wrapper";
+import Title from "../title";
 
+const Wrapper = styled.div`
+  margin: 100px 0;
+`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -19,7 +21,7 @@ const Grid = styled.div`
 
 const ReasonsSection: React.FC = () => {
     return (
-        <SectionWrapper>
+        <Wrapper>
             <Title text="Why you can trust me" />
             <Grid>
                 {Reasons.map((reason, index) => (
@@ -31,7 +33,7 @@ const ReasonsSection: React.FC = () => {
                     />
                 ))}
             </Grid>
-        </SectionWrapper>
+        </Wrapper>
     );
 };
 

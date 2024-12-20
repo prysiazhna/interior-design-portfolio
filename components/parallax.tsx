@@ -7,7 +7,7 @@ const ParallaxWrapper = styled.div`
   position: relative;
   overflow: hidden;
   margin: 0 calc(-50vw + 50%);
-  height: 60vh; 
+  height: 70vh; 
   width: 100vw; 
   max-width: 100vw;
 `;

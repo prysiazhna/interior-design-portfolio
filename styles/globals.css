@@ -1,3 +1,7 @@
+:root {
+    --main-color-bg: #181c1c;
+    --main-color: #00b2eb;
+}
 
 html,
 body {
@@ -17,4 +21,8 @@ body {
 .page {
     position: relative;
     overflow: hidden;
+}
+
+.Toastify__progress-bar--success {
+    background-color: var(--main-color);
 }

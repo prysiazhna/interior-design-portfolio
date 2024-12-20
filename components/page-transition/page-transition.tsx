@@ -20,14 +20,14 @@ const Background = styled.div`
   left: 0;
   top: 0;
   z-index: 9999;
-  background-color: #000;
+  background-color: black;
   transition: opacity 0s linear 0.1s;
 `;
 
 const Container = styled(motion.div)`
   position: absolute;
   left: 50%;
-  color: rgb(75, 163, 191);
+  color: var(--main-color);
   font-size: 5rem;
   z-index: 99999;
   font-weight: 600;

@@ -79,7 +79,7 @@ const Text = styled.p`
     transform-origin: bottom center;
     position: absolute;
     top: 0;
-    color: rgb(75, 163, 191);
+    color: var(--main-color);
     opacity: 0;
   }
 

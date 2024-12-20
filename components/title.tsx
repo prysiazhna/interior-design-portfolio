@@ -23,18 +23,34 @@ const StyledTitle = styled.h2<{ size: "sm" | "md" | "lg" | undefined }>`
   ${({size}) =>
           size === "md" &&
           css`
-            font-size: 36px;
-            margin-top: 40px;
-            margin-bottom: 90px;
+            font-size: 70px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            
+            @media (max-width: 992px) {
+              font-size: 50px;
+              margin-bottom: 20px;
+            }
+            @media (max-width: 768px) {
+              font-size: 40px;
+              margin-bottom: 20px;
+            }
+            
+            @media (max-width: 500px) {
+              font-size: 30px;
+              margin-bottom: 10px;
+            }
           `}
 
   ${({size}) =>
           size === "lg" &&
           css`
-            font-size: 56px;
+            font-size: 70px;
             margin-top: 50px;
             margin-bottom: 100px;
-            @media (max-width: 1200px) {
+            
+            @media (max-width: 992px) {
+              font-size: 50px;
               margin-top: 20px;
               margin-bottom: 50px;
             }

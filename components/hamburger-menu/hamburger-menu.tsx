@@ -8,7 +8,7 @@ import MenuAnimation from "./menu-animation";
 import {NavItems} from "../../data/data.config";
 
 const HamburgerButton = styled.div`
-  position: absolute;
+  position: fixed;
   top: 40px;
   right: 40px;
   z-index: 10;

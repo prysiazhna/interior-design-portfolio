@@ -3,11 +3,11 @@ const nextConfig = {
     compiler: {
         styledComponents: {
             ssr: true,
-            displayName: true, // For debugging
+            displayName: true,
         },
     },
     experimental: {
-        appDir: false, // Explicitly disable the App Router
+        // appDir: false,
     },
 };
 

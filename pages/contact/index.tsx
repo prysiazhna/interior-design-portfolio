@@ -1,62 +1,59 @@
 'use client';
-
 import React from 'react';
 import styled from 'styled-components';
 import Socials from "../../components/Socials";
 import ContactForm from "./contact-form";
+import Title from "../../components/title";
+import Footer from "../../components/footer";
+
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 const SectionWrapper = styled.section`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 35px;
   padding: 60px 80px;
-  background: #181c1c;
-  height: 100vh;
+  background: var(--main-color-bg);
 
   @media (max-width: 768px) {
     padding: 40px 20px;
   }
 `;
 
-const ContactWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  gap: 50px;
+const Text = styled.section`
+  font-size: 20px;
+  line-height: 1.6;
+  color: white;
+  margin: 0;
+  text-align: center;
+  max-width: 750px;
 
-
-  p {
-    font-size: 26px;
-    line-height: 1.6;
-    color: white;
-    margin: 0;
-    text-align: center;
-    max-width: 750px;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+  @media (max-width: 500px) {
+    font-size: 15px;
   }
 `;
 
-const Title = styled.div`
-  font-weight: bold;
-  text-align: center;
-  color: #fff;
-  font-size: 56px;
-`
-
 const Index: React.FC = () => {
     return (
-        <SectionWrapper>
-            <ContactWrapper>
-                <Title>Get Free Consultation</Title>
-                <p>I will be happy to help you create a unique and stylish interior design, taking into account all your wishes, needs, and desired style</p>
+        <PageWrapper>
+            <SectionWrapper>
+                <Title text="Get Free Consultation" size="md" />
+                <Text>
+                    I will be happy to help you create a unique and stylish interior design, taking into account all
+                    your wishes, needs, and desired style
+                </Text>
                 <ContactForm />
                 <Socials />
-            </ContactWrapper>
-        </SectionWrapper>
+            </SectionWrapper>
+            <Footer />
+        </PageWrapper>
     );
 };
 

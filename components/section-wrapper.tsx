@@ -3,8 +3,8 @@
 import styled from "styled-components";
 
 const SectionWrapper = styled.section`
-  padding: 60px 80px;
-  background: #181c1c;
+  padding: 60px 100px;
+  background: var(--main-color-bg);
   min-height: 100vh;
 
   @media (max-width: 768px) {
