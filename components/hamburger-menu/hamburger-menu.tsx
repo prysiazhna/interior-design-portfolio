@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { usePathname } from 'next/navigation';
-import MenuAnimation from "./menu-animation";
-import {NavItems} from "../../data/data.config";
+import MenuAnimation from './menu-animation';
+import { NavItems } from '../../data/data.config';
 
 const HamburgerButton = styled.div`
   position: fixed;
@@ -39,11 +39,14 @@ const HamburgerButton = styled.div`
   }
 `;
 
-
 const HamburgerMenu: React.FC = () => {
     const pathname = usePathname();
     const [isActive, setIsActive] = useState(false);
     const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+
+    useEffect(() => {
+        setSelectedIndicator(pathname);
+    }, [pathname]);
 
     return (
         <>
@@ -61,7 +64,7 @@ const HamburgerMenu: React.FC = () => {
                     <MenuAnimation
                         navItems={NavItems}
                         setSelectedIndicator={setSelectedIndicator}
-                        pathname={pathname}
+                        selectedIndicator={selectedIndicator}
                     />
                 )}
             </AnimatePresence>

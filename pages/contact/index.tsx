@@ -2,11 +2,11 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import Socials from "../../components/Socials";
+import {motion} from 'framer-motion';
 import ContactForm from "./contact-form";
 import Title from "../../components/title";
 import Footer from "../../components/footer";
+import Socials from "../../components/socials";
 
 const PageWrapper = styled.div`
   display: flex;
@@ -49,40 +49,40 @@ const SocialsWrapper = styled(motion.div)`
 `;
 
 const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut" } },
+    hidden: {opacity: 0, scale: 0.7},
+    visible: {opacity: 1, scale: 1, transition: {duration: 1.6, ease: "easeOut"}},
 };
 
 const socialsVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut", staggerChildren: 0.2 } },
+    hidden: {opacity: 0, scale: 0.7},
+    visible: {opacity: 1, scale: 1, transition: {duration: 1.6, ease: "easeOut", staggerChildren: 0.2}},
 };
 
 const Index: React.FC = () => {
     return (
         <PageWrapper>
             <SectionWrapper>
-                <Title text="Get Free Consultation" size="md" />
+                <Title text="Get Free Consultation" size="md"/>
                 <Text
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{once: true, amount: 0.2}}
                     variants={textVariants}
                 >
                     I will be happy to help you create a unique and stylish interior design, taking into account all
                     your wishes, needs, and desired style
                 </Text>
-                <ContactForm />
+                <ContactForm/>
                 <SocialsWrapper
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{once: true, amount: 0.2}}
                     variants={socialsVariants}
                 >
-                    <Socials />
+                    <Socials/>
                 </SocialsWrapper>
             </SectionWrapper>
-            <Footer />
+            <Footer/>
         </PageWrapper>
     );
 };

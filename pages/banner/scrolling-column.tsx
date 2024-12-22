@@ -49,7 +49,11 @@ const ScrollingColumn: React.FC<ScrollingColumnProps> = ({colIndex, totalImagesP
         >
             {Array.from({ length: totalImagesPerColumn + 6 }, (_, rowIndex) => {
                 const { src, alt } = getImage(colIndex, rowIndex);
-                return <ImageWrapper key={`${colIndex}-${rowIndex}`} src={src} alt={alt} />;
+                return (
+                    <ImageWrapper key={`${colIndex}-${rowIndex}`}>
+                        <img src={src} alt={alt} />
+                    </ImageWrapper>
+                );
             })}
         </motion.div>
     );

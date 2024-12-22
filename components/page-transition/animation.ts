@@ -14,7 +14,7 @@ export const title = {
         transition: {duration: .5, delay: .4, ease: [0.33, 1, 0.68, 1]}
     }
 }
-export const curve = (initialPath, targetPath) => {
+export const curve = (initialPath: string, targetPath: string) => {
     return {
         initial: {
             d: initialPath

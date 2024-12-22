@@ -57,7 +57,7 @@ interface TitleProps {
 
 const Title: React.FC<TitleProps> = ({ text, size = "lg" }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, threshold: 0.2 });
+    const isInView = useInView(ref, { once: true, amount: 0.2 });
 
     return (
         <TitleWrapper ref={ref}>

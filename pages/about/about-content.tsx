@@ -3,8 +3,8 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Socials from "../../components/Socials";
 import Highlights from "../../components/highlights/highlights";
+import Socials from "../../components/socials";
 
 const ContentWrapper = styled(motion.div)`
   flex: 1;

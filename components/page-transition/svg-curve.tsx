@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import {AnimationControls, motion, Variants} from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 import {curve, translate} from "./animation";
 
-export const anim = (variants) => {
+export const anim = (variants: Variants) => {
     return {
         variants,
         initial: 'initial',
@@ -24,7 +24,12 @@ const StyledSVG = styled(motion.svg)`
 
 const StyledPath = styled(motion.path)``;
 
-const SvgCurve = ({ height, width }) => {
+interface SvgCurveProps {
+    width: number;
+    height: number;
+    controls: AnimationControls;
+}
+const SvgCurve = ({ height, width }: SvgCurveProps) => {
     const initialPath = `
     M0 300
     Q${width / 2} 0 ${width} 300

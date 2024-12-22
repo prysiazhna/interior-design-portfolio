@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 type MenuProps = {
     navItems: { title: string; href: string }[];
     setSelectedIndicator: (href: string) => void;
-    pathname: string;
+    selectedIndicator: string;
 };
 
 const MenuWrapper = styled(motion.div)`
@@ -44,22 +44,13 @@ const Nav = styled.div`
   width: 100%;
 `;
 
-const Curve = styled.svg`
-  position: absolute;
-  top: 0;
-  left: -99px;
-  width: 100px;
-  height: 100%;
-  fill: rgb(9,10,11);
-  stroke: none;
-`;
-
-const Link = styled.a`
+const Link = styled.a<{ $isActive: boolean }>`
   position: relative;
   cursor: pointer;
   transition: transform 0.4s;
   transform-style: preserve-3d;
   text-decoration: none;
+  color: ${({ $isActive }) => ($isActive ? 'var(--main-color)' : 'white')} !important;
 
   &:hover {
     transform: rotateX(90deg);
@@ -72,9 +63,8 @@ const Text = styled.p`
   font-weight: 700;
   margin: 0;
   transition: all 0.4s;
-  color: white;
   line-height: 5rem;
-  
+
   @media (max-width: 768px) {
     font-size: 3rem;
     line-height: 3rem;
@@ -99,22 +89,13 @@ const Text = styled.p`
   }
 `;
 
-
 const menuSlide = {
-    initial: { x: "calc(100% + 100px)" },
-    enter: { x: "0", transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } },
-    exit: { x: "calc(100% + 100px)", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
+    initial: { x: 'calc(100% + 100px)' },
+    enter: { x: '0', transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } },
+    exit: { x: 'calc(100% + 100px)', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
 };
 
-const curveAnimation = (windowHeight: number) => ({
-    initial: { d: `M100 0 L100 ${windowHeight} Q-100 ${windowHeight / 2} 100 0` },
-    enter: { d: `M100 0 L100 ${windowHeight} Q100 ${windowHeight / 2} 100 0`, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } },
-    exit: { d: `M100 0 L100 ${windowHeight} Q-100 ${windowHeight / 2} 100 0`, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
-});
-
-const MenuAnimation: React.FC<MenuProps> = ({  navItems, setSelectedIndicator, pathname }) => {
-    const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
-
+const MenuAnimation: React.FC<MenuProps> = ({ navItems, setSelectedIndicator, selectedIndicator }) => {
     return (
         <MenuWrapper
             variants={menuSlide}
@@ -122,27 +103,22 @@ const MenuAnimation: React.FC<MenuProps> = ({  navItems, setSelectedIndicator, p
             animate="enter"
             exit="exit"
         >
-            <Curve>
-                <motion.path
-                    variants={curveAnimation(windowHeight)}
-                    initial="initial"
-                    animate="enter"
-                    exit="exit"
-                ></motion.path>
-            </Curve>
             <Nav className="container">
-                {navItems.map((data, index) => (
-                    <MotionDiv
-                        key={index}
-                        onMouseEnter={() => setSelectedIndicator(data.href)}
-                        onMouseLeave={() => setSelectedIndicator(pathname)}
-                    >
-                        <Link href={data.href}>
-                            <Text className="primary">{data.title}</Text>
-                            <Text className="secondary">{data.title}</Text>
-                        </Link>
-                    </MotionDiv>
-                ))}
+                {navItems.map((data, index) => {
+                    const isActive = selectedIndicator === data.href;
+                    return (
+                        <MotionDiv
+                            key={index}
+                            onMouseEnter={() => setSelectedIndicator(data.href)}
+                            onMouseLeave={() => setSelectedIndicator(selectedIndicator)}
+                        >
+                            <Link href={data.href} $isActive={isActive}>
+                                <Text className="primary">{data.title}</Text>
+                                <Text className="secondary">{data.title}</Text>
+                            </Link>
+                        </MotionDiv>
+                    );
+                })}
             </Nav>
         </MenuWrapper>
     );

@@ -14,7 +14,7 @@ const FormWrapper = styled(motion.form)`
   width: 100%;
 `;
 
-const InputField = styled(motion.input)`
+const InputField = styled.input`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid white;
@@ -30,7 +30,7 @@ const InputField = styled(motion.input)`
   }
 `;
 
-const TextAreaField = styled(motion.textarea)`
+const TextAreaField = styled.textarea`
   width: 100%;
   height: 120px;
   padding: 12px 16px;
@@ -48,7 +48,7 @@ const TextAreaField = styled(motion.textarea)`
   }
 `;
 
-const SubmitButton = styled(motion.button)`
+const SubmitButton = styled.button`
   padding: 12px 16px;
   background-color: var(--main-color);
   color: white;
@@ -93,21 +93,12 @@ const ContactForm: React.FC = () => {
         }
     };
 
-    const fieldVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-    };
-
     return (
         <FormWrapper
             onSubmit={handleSubmit}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut", staggerChildren: 0.2 } },
-            }}
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.6, ease: "easeOut" }}
         >
             <InputField
                 type="text"
@@ -115,7 +106,6 @@ const ContactForm: React.FC = () => {
                 placeholder="Your name"
                 value={name}
                 onChange={handleInputChange}
-                variants={fieldVariants}
             />
             <InputField
                 type="tel"
@@ -123,18 +113,14 @@ const ContactForm: React.FC = () => {
                 placeholder="Your phone number"
                 value={phone}
                 onChange={handleInputChange}
-                variants={fieldVariants}
             />
             <TextAreaField
                 name="message"
                 placeholder="Message"
                 value={message}
                 onChange={handleInputChange}
-                variants={fieldVariants}
             />
-            <SubmitButton type="submit" variants={fieldVariants}>
-                Submit
-            </SubmitButton>
+            <SubmitButton type="submit">Submit</SubmitButton>
         </FormWrapper>
     );
 };

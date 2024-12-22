@@ -7,7 +7,6 @@ import { title} from "./animation";
 import SvgCurve, {anim} from "./svg-curve";
 
 const PageWrapper = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
   position: relative;
   overflow: hidden;
 `;
@@ -35,11 +34,14 @@ const Container = styled(motion.div)`
   text-align: center;
 `;
 
-export default function PageTransition({ children, backgroundColor }) {
+interface PageTransitionProps {
+    children: React.ReactNode;
+}
+export default function PageTransition({ children }: PageTransitionProps) {
     const controls = useAnimation();
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-    const routes = {
+    const routes: Record<string, string> = {
         '/': 'Home',
         '/about': 'About',
         '/contact': 'Contact',
@@ -66,11 +68,13 @@ export default function PageTransition({ children, backgroundColor }) {
         return () => clearTimeout(timeout);
     }, [controls]);
 
+    const routeName = routes[router.route as keyof typeof routes];
+
     return (
-        <PageWrapper backgroundColor={backgroundColor}>
+        <PageWrapper>
             <Background style={{ opacity: dimensions.width === 0 ? 1 : 0 }} />
             <Container {...anim(title)}>
-                 {routes[router.route]}
+                {routeName}
             </Container>
             {dimensions.width > 0 && <SvgCurve {...dimensions} controls={controls} />}
             {children}
