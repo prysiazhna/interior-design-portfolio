@@ -24,7 +24,11 @@ const StyledOverlay = styled.div`
     font-weight: bold;
 
     @media (max-width: 768px) {
-      font-size: 1rem;
+      font-size: 4rem;
+    }
+    
+    @media (max-width: 500px) {
+      font-size: 2rem;
     }
   }
 
@@ -36,7 +40,10 @@ const StyledOverlay = styled.div`
     text-shadow: 0 2px 27px rgba(0, 0, 0, 1);
 
     @media (max-width: 768px) {
-      font-size: 0.5rem;
+      font-size: 2.5rem;
+    }
+    @media (max-width: 500px) {
+      font-size: 1.5rem;
     }
   }
 `;

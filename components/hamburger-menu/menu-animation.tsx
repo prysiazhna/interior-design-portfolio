@@ -24,6 +24,10 @@ const MenuWrapper = styled(motion.div)`
   justify-content: space-between;
   padding: 100px;
   box-sizing: border-box;
+
+  @media (max-width: 992px) {
+    padding: 50px;
+  }
 `;
 
 const MotionDiv = styled(motion.div)`
@@ -73,6 +77,11 @@ const Text = styled.p`
   transition: all 0.4s;
   color: white;
   line-height: 5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
 
   &.secondary {
     transform: rotateX(-90deg) translateY(2.5rem);

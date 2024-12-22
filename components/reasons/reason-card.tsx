@@ -1,9 +1,9 @@
 'use client';
 
 import styled from "styled-components";
-import React from "react";
-
-const CardWrapper = styled.div`
+import React, {useRef} from "react";
+import {motion, useInView} from "framer-motion";
+const CardWrapper = styled(motion.div)`
   display: flex;
   align-items: flex-start;
   gap: 16px;
@@ -31,35 +31,50 @@ const Divider = styled.div`
 `;
 
 const Content = styled.div`
-  div {
-    font-size: 32px;
-    margin: 0 0 8px;
-    color: var(--main-color);
-    font-family: var(--font-inter-regular), sans-serif;
-  }
-
-  span {
-    font-size: 24px;
-    color: white;
-    margin: 0;
-    font-family: var(--font-inter-light), sans-serif;
-  }
+  display: flex;
+  flex-direction: column;
 `;
+
+const Title = styled.div`
+  font-size: 32px;
+  margin: 0 0 8px;
+  color: var(--main-color);
+  font-family: var(--font-inter-regular), sans-serif;
+`;
+
+const Description = styled.span`
+  font-size: 24px;
+  color: white;
+  margin: 0;
+  font-family: var(--font-inter-light), sans-serif;
+`;
+
 interface ReasonCardProps {
     number: string;
     title: string;
     description: string;
+    animationDelay: number;
+    fromLeft: boolean;
 }
-const ReasonCard: React.FC<ReasonCardProps> = ({ number, title, description }) => {
+
+const ReasonCard: React.FC<ReasonCardProps> = ({ number, title, description, animationDelay, fromLeft }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <CardWrapper>
+        <CardWrapper
+            ref={ref}
+            initial={{ opacity: 0, x: fromLeft ? -50 : 50 }} // Напрямок залежить від пропсу
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.6, delay: animationDelay }}
+        >
             <NumberWrapper>
                 <Number>{number}</Number>
                 <Divider />
             </NumberWrapper>
             <Content>
-                <div>{title}</div>
-                <span>{description}</span>
+                <Title>{title}</Title>
+                <Description>{description}</Description>
             </Content>
         </CardWrapper>
     );

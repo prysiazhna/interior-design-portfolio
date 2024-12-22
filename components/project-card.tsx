@@ -1,19 +1,19 @@
 'use client';
 
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useInView } from "framer-motion";
 
-const CardWrapper = styled.div`
+const CardWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: #fff;
+  background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
- 
 
   &:hover .overlay {
     opacity: 1;
@@ -30,12 +30,7 @@ const ImageWrapper = styled.div`
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  transition: transform 0.3s ease;
 
-  &:hover{
-    transform: scale(1.1);
-  }
-  
   img {
     object-fit: cover;
     width: 100%;
@@ -60,7 +55,7 @@ const HoverButton = styled(Link)`
   top: calc(50% - 30px);
   left: calc(50% - 120px);
   opacity: 0;
-  color: #fff;
+  color: white;
   border: 1px white solid;
   padding: 10px 20px;
   border-radius: 4px;
@@ -81,8 +76,21 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ id, imageSrc }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.1 });
+
+    const animationVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.6, ease: "easeOut" } },
+    };
+
     return (
-        <CardWrapper>
+        <CardWrapper
+            ref={ref}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={animationVariants}
+        >
             <ImageWrapper>
                 <Image
                     src={imageSrc}

@@ -12,15 +12,14 @@ const ContentWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start; 
-  align-items: center; 
+  align-items: center;
   gap: 40px;
-  min-height: 100vh; 
+  min-height: calc(100vh - 60px); 
   margin: 0 auto;
-  padding: 20px 0;
+  padding-bottom: 20px;
 
   @media (max-width: 992px) {
     flex-direction: column;
-    gap: 16px;
   }
 `;
 
@@ -28,8 +27,8 @@ const ImageWrapper = styled(motion.div)`
   flex: 1;
   max-width: 50%;
   display: flex;
-  justify-content: flex-start; 
-  align-items: flex-start;
+  justify-content: center; 
+  align-items: center;
   
   @media (max-width: 992px) {
     max-width: 90%;
@@ -41,6 +40,7 @@ const Image = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover; 
+  max-width: 600px;
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -50,11 +50,12 @@ const Image = styled.img`
 
 const Index: React.FC = () => {
     const animationVariants = {
-        hidden: { opacity: 0, y: 100 },
+        hidden: { opacity: 0, y: 100, scale: 0.9 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+            scale: 1,
+            transition: { delay: 0.5, duration: 1.6, ease: "easeOut" },
         },
     };
 

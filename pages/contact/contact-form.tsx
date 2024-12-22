@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
-import {sendEmail, validateForm} from "../../utils/emailHelpers";
+import { sendEmail, validateForm } from "../../utils/emailHelpers";
+import { motion } from "framer-motion";
 
-const FormWrapper = styled.form`
+const FormWrapper = styled(motion.form)`
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
@@ -13,7 +14,7 @@ const FormWrapper = styled.form`
   width: 100%;
 `;
 
-const InputField = styled.input`
+const InputField = styled(motion.input)`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid white;
@@ -29,7 +30,7 @@ const InputField = styled.input`
   }
 `;
 
-const TextAreaField = styled.textarea`
+const TextAreaField = styled(motion.textarea)`
   width: 100%;
   height: 120px;
   padding: 12px 16px;
@@ -47,7 +48,7 @@ const TextAreaField = styled.textarea`
   }
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled(motion.button)`
   padding: 12px 16px;
   background-color: var(--main-color);
   color: white;
@@ -91,14 +92,29 @@ const ContactForm: React.FC = () => {
         }
     };
 
+    const fieldVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    };
+
     return (
-        <FormWrapper onSubmit={handleSubmit}>
+        <FormWrapper
+            onSubmit={handleSubmit}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut", staggerChildren: 0.2 } },
+            }}
+        >
             <InputField
                 type="text"
                 name="name"
                 placeholder="Your name"
                 value={name}
                 onChange={handleInputChange}
+                variants={fieldVariants}
             />
             <InputField
                 type="tel"
@@ -106,17 +122,20 @@ const ContactForm: React.FC = () => {
                 placeholder="Your phone number"
                 value={phone}
                 onChange={handleInputChange}
+                variants={fieldVariants}
             />
             <TextAreaField
                 name="message"
                 placeholder="Message"
                 value={message}
                 onChange={handleInputChange}
+                variants={fieldVariants}
             />
-            <SubmitButton type="submit" >
+            <SubmitButton type="submit" variants={fieldVariants}>
                 Submit
             </SubmitButton>
         </FormWrapper>
     );
 };
+
 export default ContactForm;

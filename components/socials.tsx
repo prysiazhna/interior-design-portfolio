@@ -2,8 +2,8 @@
 
 import React from "react";
 import styled from "styled-components";
-import MagneticButton from "./MagneticButton";
 import { ImBehance2, ImLinkedin, ImMail } from "react-icons/im";
+import MagneticButton from "./magnetic-button";
 
 const SocialsWrapper = styled.div`
   display: flex;

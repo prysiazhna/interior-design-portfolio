@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import SectionWrapper from "../../components/section-wrapper";
 import Title from "../../components/title";
-import {ProjectData} from "../../data/data.config";
+import { ProjectData } from "../../data/data.config";
 import ProjectCard from "../../components/project-card";
 
 const GridWrapper = styled.div`
@@ -15,7 +15,7 @@ const GridWrapper = styled.div`
   align-items: center;
 
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
@@ -25,12 +25,7 @@ const Index: React.FC = () => {
             <Title text="Projects" />
             <GridWrapper>
                 {ProjectData.map((project) => (
-                    <ProjectCard
-                        key={project.id}
-                        id={project.id}
-                        imageSrc={project.imageSrc}
-                        description={project.description}
-                    />
+                    <ProjectCard key={project.id} id={project.id} imageSrc={project.imageSrc} />
                 ))}
             </GridWrapper>
         </SectionWrapper>

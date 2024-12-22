@@ -2,14 +2,12 @@
 
 import React from "react";
 import styled from "styled-components";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect } from "react";
+import AnimatedNumber from "./animated-number";
 
 const HighlightsWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-bottom: 50px;
+  gap: 25px;
   align-items: center;
   flex-direction: row;
   
@@ -23,37 +21,21 @@ const Highlight = styled.div`
   text-align: center;
 `;
 
-const Numbers = styled.div`
-  display: block;
-  font-size: 62px;
-  font-weight: bold;
-  color: var(--main-color);
-
-  @media (max-width: 992px) {
-    font-size: 40px ;
-  }
-`
 const Labels = styled.div`
-  margin: 0;
   font-size: 22px;
   color: var(--main-color);
+  margin-bottom: 30px;
 
-  @media (max-width: 1000px) {
-    font-size: 16px;
+  @media (max-width: 1400px) {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 992px) {
+    font-size: 20px;
+    margin-bottom: 20px;
   }
 `
-const AnimatedNumber: React.FC<{ targetNumber: number | string }> = ({ targetNumber }) => {
-    const count = useMotionValue(0);
-    const rounded = useTransform(count, Math.round);
-
-    useEffect(() => {
-        animate(count, typeof targetNumber === "string" ? parseInt(targetNumber) : targetNumber, {
-            duration: 2, delay: 1
-        });
-    }, [count, targetNumber]);
-
-    return <motion.span>{rounded}</motion.span>;
-};
 
 const Highlights: React.FC = () => {
     const highlights = [
@@ -66,9 +48,7 @@ const Highlights: React.FC = () => {
         <HighlightsWrapper>
             {highlights.map((item, index) => (
                 <Highlight key={index}>
-                    <Numbers>
-                        <AnimatedNumber targetNumber={item.number} />+
-                    </Numbers>
+                    <AnimatedNumber targetNumber={item.number} />
                     <Labels>{item.label}</Labels>
                 </Highlight>
             ))}
