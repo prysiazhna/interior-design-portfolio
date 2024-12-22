@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 type MenuProps = {
-    isActive: boolean;
-    onClose: () => void;
     navItems: { title: string; href: string }[];
-    selectedIndicator: string;
     setSelectedIndicator: (href: string) => void;
     pathname: string;
 };
@@ -115,7 +112,7 @@ const curveAnimation = (windowHeight: number) => ({
     exit: { d: `M100 0 L100 ${windowHeight} Q-100 ${windowHeight / 2} 100 0`, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
 });
 
-const MenuAnimation: React.FC<MenuProps> = ({ isActive, onClose, navItems, selectedIndicator, setSelectedIndicator, pathname }) => {
+const MenuAnimation: React.FC<MenuProps> = ({  navItems, setSelectedIndicator, pathname }) => {
     const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
 
     return (

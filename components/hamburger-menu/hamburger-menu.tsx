@@ -59,10 +59,7 @@ const HamburgerMenu: React.FC = () => {
             <AnimatePresence>
                 {isActive && (
                     <MenuAnimation
-                        isActive={isActive}
-                        onClose={() => setIsActive(false)}
                         navItems={NavItems}
-                        selectedIndicator={selectedIndicator}
                         setSelectedIndicator={setSelectedIndicator}
                         pathname={pathname}
                     />

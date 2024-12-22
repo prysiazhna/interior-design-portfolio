@@ -87,7 +87,8 @@ const ContactForm: React.FC = () => {
             await sendEmail({ name, phone, message });
             toast.success("Email sent successfully!");
             setFormData({ name: "", phone: "", message: "" });
-        } catch (error) {
+        } catch (e) {
+            console.log(e);
             toast.error("Failed to send email. Please try again later.");
         }
     };

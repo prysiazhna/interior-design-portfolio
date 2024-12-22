@@ -24,7 +24,7 @@ const StyledSVG = styled(motion.svg)`
 
 const StyledPath = styled(motion.path)``;
 
-const SvgCurve = ({ height, width, controls }) => {
+const SvgCurve = ({ height, width }) => {
     const initialPath = `
     M0 300
     Q${width / 2} 0 ${width} 300

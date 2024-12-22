@@ -96,7 +96,7 @@ const AboutContent: React.FC = () => {
                 <Description>
                     My name is Serhii, and I am an interior designer and 3D visualizer
                     with experience in completing projects from visualization to finished
-                    spaces. It's important to me that all materials I use in my
+                    spaces. It&apos;s important to me that all materials I use in my
                     visualizations are accessible to every client. I take all the wishes
                     of clients and their style, combining it with my experience to come
                     to the best solution together.
