@@ -7,6 +7,7 @@ type MenuProps = {
     selectedIndicator: string;
     setSelectedIndicator: (href: string) => void;
     pathname: string;
+    cachedHeight: number;
 };
 
 const MenuWrapper = styled(motion.div)`
@@ -22,7 +23,7 @@ const MenuWrapper = styled(motion.div)`
   justify-content: space-between;
   padding: 100px;
   box-sizing: border-box;
-  
+
   @media (max-width: 768px) {
     padding: 50px;
   }
@@ -100,10 +101,10 @@ const menuSlide = {
     exit: { x: "calc(100% + 100px)", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
 };
 
-const curveAnimation = (windowHeight: number) => ({
-    initial: { d: `M100 0 L100 ${windowHeight} Q-100 ${windowHeight / 2} 100 0` },
-    enter: { d: `M100 0 L100 ${windowHeight} Q100 ${windowHeight / 2} 100 0`, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } },
-    exit: { d: `M100 0 L100 ${windowHeight} Q-100 ${windowHeight / 2} 100 0`, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+const curveAnimation = (cachedHeight: number) => ({
+    initial: { d: `M100 0 L100 ${cachedHeight} Q-100 ${cachedHeight / 2} 100 0` },
+    enter: { d: `M100 0 L100 ${cachedHeight} Q100 ${cachedHeight / 2} 100 0`, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } },
+    exit: { d: `M100 0 L100 ${cachedHeight} Q-100 ${cachedHeight / 2} 100 0`, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
 });
 
 const isMenuItemActive = (href: string, pathname: string, selectedIndicator: string): boolean => {
@@ -112,9 +113,8 @@ const isMenuItemActive = (href: string, pathname: string, selectedIndicator: str
     }
     return selectedIndicator === href || pathname === href;
 };
-const MenuAnimation: React.FC<MenuProps> = ({ navItems, selectedIndicator, setSelectedIndicator, pathname }) => {
-    const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
 
+const MenuAnimation: React.FC<MenuProps> = ({ navItems, selectedIndicator, setSelectedIndicator, pathname, cachedHeight }) => {
     return (
         <MenuWrapper
             variants={menuSlide}
@@ -124,7 +124,7 @@ const MenuAnimation: React.FC<MenuProps> = ({ navItems, selectedIndicator, setSe
         >
             <Curve>
                 <motion.path
-                    variants={curveAnimation(windowHeight)}
+                    variants={curveAnimation(cachedHeight)}
                     initial="initial"
                     animate="enter"
                     exit="exit"

@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { usePathname } from 'next/navigation';
 import MenuAnimation from "./menu-animation";
-import {NavItems} from "../../data/data.config";
+import { NavItems } from "../../data/data.config";
 
 const HamburgerButton = styled.div`
   position: absolute;
@@ -18,7 +18,7 @@ const HamburgerButton = styled.div`
   justify-content: center;
   align-items: center;
   gap: 6px;
- 
+
   .burger {
     width: 30px;
     height: 3px;
@@ -41,11 +41,21 @@ const HamburgerButton = styled.div`
   }
 `;
 
-
 const HamburgerMenu: React.FC = () => {
     const pathname = usePathname();
     const [isActive, setIsActive] = useState(false);
     const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+
+    const [cachedHeight, setCachedHeight] = useState(0);
+
+    useEffect(() => {
+        setCachedHeight(window.innerHeight);
+
+        const handleResize = () => setCachedHeight(window.innerHeight);
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <>
@@ -65,6 +75,7 @@ const HamburgerMenu: React.FC = () => {
                         selectedIndicator={selectedIndicator}
                         setSelectedIndicator={setSelectedIndicator}
                         pathname={pathname}
+                        cachedHeight={cachedHeight}
                     />
                 )}
             </AnimatePresence>
