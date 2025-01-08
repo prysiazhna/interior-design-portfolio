@@ -1,20 +1,21 @@
 'use client';
-
 import React from 'react';
 import styled from 'styled-components';
 import SectionWrapper from "../../components/section-wrapper";
 import AboutContent from "./about-content";
 import { motion } from "framer-motion";
-import Parallax from "../../components/parallax";
+import ParallaxDesktop from "../../components/parallax/parallax-desktop";
+import ParallaxMobile from "../../components/parallax/parallax-mobile";
 import ReasonsSection from "../../components/reasons/reasons-section";
+import useMediaQuery from "../../hooks/use-media-query";
 
 const ContentWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: center;
   gap: 40px;
-  min-height: calc(100vh - 60px); 
+  min-height: calc(100vh - 60px);
   margin: 0 auto;
   padding-bottom: 20px;
 
@@ -27,9 +28,9 @@ const ImageWrapper = styled(motion.div)`
   flex: 1;
   max-width: 50%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-  
+
   @media (max-width: 992px) {
     max-width: 90%;
     margin-top: 40px;
@@ -39,7 +40,7 @@ const ImageWrapper = styled(motion.div)`
 const Image = styled.img`
   width: 100%;
   height: auto;
-  object-fit: cover; 
+  object-fit: cover;
   max-width: 600px;
 
   @media (max-width: 768px) {
@@ -49,6 +50,8 @@ const Image = styled.img`
 `;
 
 const Index: React.FC = () => {
+    const isMobile = useMediaQuery('(max-width: 992px)');
+
     const animationVariants = {
         hidden: { opacity: 0, y: 100, scale: 0.9 },
         visible: {
@@ -71,8 +74,8 @@ const Index: React.FC = () => {
                 </ImageWrapper>
                 <AboutContent />
             </ContentWrapper>
-            <Parallax/>
-            <ReasonsSection/>
+            {isMobile ? <ParallaxMobile /> : <ParallaxDesktop />}
+            <ReasonsSection />
         </SectionWrapper>
     );
 };

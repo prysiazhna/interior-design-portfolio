@@ -32,6 +32,10 @@ const Container = styled(motion.div)`
   font-weight: 600;
   transform: translateX(-50%);
   text-align: center;
+
+  @media (max-width: 1200px) {
+    font-size: 3rem;
+  }
 `;
 
 interface PageTransitionProps {
@@ -47,6 +51,14 @@ export default function PageTransition({ children }: PageTransitionProps) {
         '/contact': 'Contact',
         '/projects': 'Projects',
     };
+
+    const getRouteName = () => {
+        if (router.route.startsWith('/projects/')) {
+            return 'Project Gallery';
+        }
+        return routes[router.route] || '';
+    };
+
 
     useEffect(() => {
         const resize = () => {
@@ -68,7 +80,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
         return () => clearTimeout(timeout);
     }, [controls]);
 
-    const routeName = routes[router.route as keyof typeof routes];
+    const routeName = getRouteName();
 
     return (
         <PageWrapper>

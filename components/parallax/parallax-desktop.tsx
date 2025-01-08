@@ -22,7 +22,7 @@ const ParallaxImage = styled.div`
   width: 100%;
 `;
 
-const Parallax: React.FC = () => {
+const ParallaxDesktop: React.FC = () => {
     return (
         <ParallaxWrapper>
             <ParallaxImage />
@@ -30,4 +30,4 @@ const Parallax: React.FC = () => {
     );
 };
 
-export default Parallax;
+export default ParallaxDesktop;

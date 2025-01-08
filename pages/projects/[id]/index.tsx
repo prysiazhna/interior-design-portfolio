@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 import styled from "styled-components";
-import { useRouter } from "next/router";
-import { ProjectData } from "../../../data/data.config";
+import {useRouter} from "next/router";
+import {ProjectData} from "../../../data/data.config";
 import SectionWrapper from "../../../components/section-wrapper";
 import Title from "../../../components/title";
-import { ProjectDataModel } from "../../../data/types";
-import { motion, useInView } from "framer-motion";
+import {ProjectDataModel} from "../../../data/types";
+import {motion, useInView} from "framer-motion";
+import Footer from "../../../components/footer";
 
 const HorizontalGrid = styled.div`
   display: grid;
@@ -30,13 +31,13 @@ const MotionImage = styled(motion.img)`
   margin: 0 auto;
 `;
 
-const AnimatedImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
+const AnimatedImage: React.FC<{ src: string; alt: string }> = ({src, alt}) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "0px 0px -50px 0px" });
+    const isInView = useInView(ref, {once: true, margin: "0px 0px -50px 0px"});
 
     const animationVariants = {
-        hidden: { opacity: 0, y: 150 , scale: 0.9},
-        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.6, ease: "easeOut" } },
+        hidden: {opacity: 0, y: 150, scale: 0.9},
+        visible: {opacity: 1, y: 0, scale: 1, transition: {duration: 1.6, ease: "easeOut"}},
     };
 
     return (
@@ -53,7 +54,7 @@ const AnimatedImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => 
 
 const ProjectPage: React.FC = () => {
     const router = useRouter();
-    const { id } = router.query;
+    const {id} = router.query;
 
     const project: ProjectDataModel | undefined = ProjectData.find((proj) => proj.id === id);
 
@@ -62,20 +63,23 @@ const ProjectPage: React.FC = () => {
     }
 
     return (
-        <SectionWrapper>
-            <Title text="Project Gallery" />
-            <HorizontalGrid>
-                {project.images.horizontal.map((src, index) => (
-                    <AnimatedImage key={index} src={src} alt={`Horizontal Image ${index + 1}`} />
-                ))}
-            </HorizontalGrid>
+        <>
+            <SectionWrapper>
+                <Title text="Project Gallery"/>
+                <HorizontalGrid>
+                    {project.images.horizontal.map((src, index) => (
+                        <AnimatedImage key={index} src={src} alt={`Horizontal Image ${index + 1}`}/>
+                    ))}
+                </HorizontalGrid>
 
-            <VerticalGrid>
-                {project.images.vertical.map((src, index) => (
-                    <AnimatedImage key={index} src={src} alt={`Vertical Image ${index + 1}`} />
-                ))}
-            </VerticalGrid>
-        </SectionWrapper>
+                <VerticalGrid>
+                    {project.images.vertical.map((src, index) => (
+                        <AnimatedImage key={index} src={src} alt={`Vertical Image ${index + 1}`}/>
+                    ))}
+                </VerticalGrid>
+            </SectionWrapper>
+            <Footer/>
+        </>
     );
 };
 

@@ -4,8 +4,9 @@ import React from "react";
 import styled from "styled-components";
 import SectionWrapper from "../../components/section-wrapper";
 import Title from "../../components/title";
-import { ProjectData } from "../../data/data.config";
+import {ProjectData} from "../../data/data.config";
 import ProjectCard from "../../components/project-card";
+import Footer from "../../components/footer";
 
 const GridWrapper = styled.div`
   display: grid;
@@ -21,14 +22,17 @@ const GridWrapper = styled.div`
 
 const Index: React.FC = () => {
     return (
-        <SectionWrapper>
-            <Title text="Projects" />
-            <GridWrapper>
-                {ProjectData.map((project) => (
-                    <ProjectCard key={project.id} id={project.id} imageSrc={project.imageSrc} />
-                ))}
-            </GridWrapper>
-        </SectionWrapper>
+        <>
+            <SectionWrapper>
+                <Title text="Projects"/>
+                <GridWrapper>
+                    {ProjectData.map((project) => (
+                        <ProjectCard key={project.id} id={project.id} imageSrc={project.imageSrc}/>
+                    ))}
+                </GridWrapper>
+            </SectionWrapper>
+            <Footer/>
+        </>
     );
 };
 

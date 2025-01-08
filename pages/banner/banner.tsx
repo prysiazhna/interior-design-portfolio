@@ -33,12 +33,20 @@ const TiltedWrapper = styled.div`
   left: 27%;
   gap: 20px;
   z-index: 0;
+  
+  @media (max-width: 768px) {
+    gap: 7px;
+  }
 `;
 
 const ScrollingColumn = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 7px;
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -48,18 +56,18 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 
   @media (max-width: 1200px) {
-    width: 350px;
+    min-width: 350px;
     height: 350px;
   }
 
   @media (max-width: 768px) {
-    width: 250px;
+    min-width: 250px;
     height: 250px;
   }
 
   @media (max-width: 480px) {
-    width: 180px;
-    height: 180px;
+    min-width: 130px;
+    height: 130px;
   }
 `;
 
@@ -77,7 +85,7 @@ const getImage = (colIndex: number, rowIndex: number) => {
 
 const Banner: React.FC = () => {
     const totalColumns = BannerImages.length;
-    const totalImagesPerColumn = Math.ceil((window.innerHeight * 2) / 370) + 6;
+    const totalImagesPerColumn = Math.ceil((window.innerHeight * 3) / 370) + 6;
 
     useEffect(() => {
         const preloadImages = async () => {
@@ -104,7 +112,7 @@ const Banner: React.FC = () => {
     return (
         <Container>
             <DarkOverlay />
-            <BannerOverlay text="Serhii  Ponych" subText="Interior Designer" />
+            <BannerOverlay subText="Interior Designer" />
             <TiltedWrapper>
                 {Array.from({ length: totalColumns }, (_, colIndex) => (
                     <ScrollingColumn

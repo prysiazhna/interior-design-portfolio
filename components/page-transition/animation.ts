@@ -1,7 +1,7 @@
 export const title = {
     initial: {
         opacity: 1,
-        top: "400px",
+        top: "45vh",
     },
     enter: {
         opacity: 0,
@@ -10,7 +10,7 @@ export const title = {
     },
     exit: {
         opacity: 1,
-        top: "400px",
+        top: "45vh",
         transition: {duration: .5, delay: .4, ease: [0.33, 1, 0.68, 1]}
     }
 }

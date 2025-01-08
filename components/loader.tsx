@@ -29,10 +29,10 @@ const rotateThree = keyframes`
 
 const LoaderContainer = styled.div`
   position: absolute;
-  top: calc(50% - 128px); 
-  left: calc(50% - 128px);
-  width: 256px; 
-  height: 256px;
+  top: calc(50% - 96px);
+  left: calc(50% - 96px);
+  width: 192px;
+  height: 192px;
   border-radius: 50%;
   perspective: 800px;
 `;
@@ -49,21 +49,21 @@ const InnerOne = styled(Inner)`
   left: 0;
   top: 0;
   animation: ${rotateOne} 1s linear infinite;
-  border-bottom: 12px solid #efeffa;
+  border-bottom: 10px solid #efeffa;
 `;
 
 const InnerTwo = styled(Inner)`
   right: 0;
   top: 0;
   animation: ${rotateTwo} 1s linear infinite;
-  border-right: 12px solid #efeffa; 
+  border-right: 10px solid #efeffa;
 `;
 
 const InnerThree = styled(Inner)`
   right: 0;
   bottom: 0;
   animation: ${rotateThree} 1s linear infinite;
-  border-top: 12px solid #efeffa; 
+  border-top: 10px solid #efeffa;
 `;
 
 const Loader = () => {
